@@ -90,3 +90,5 @@ arcpy.CopyFeatures_management("nogo_join_Layer2",
 # Working now (use TableToTable instead of TableToExcel [this requires table as an input, not feature class])
 filename3 = "Table_" + buff_dist + "_" + search_dist + "_" + min_feats + "feats.csv"
 arcpy.TableToTable_conversion(in_rows="nogo_join_Layer2", out_path="Output", out_name=filename3)
+
+## Add more functions for mapping here?
