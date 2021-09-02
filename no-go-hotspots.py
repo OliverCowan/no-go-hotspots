@@ -87,8 +87,6 @@ outname2 = os.path.join(output_dir, filename2)
 arcpy.CopyFeatures_management("nogo_join_Layer2",
                               outname2)
 
-#This should export the attribute table of "nogo_join_Layer2", b ut is not working :/
-# We'll keep trying.
-filename3 = "Table_" + buff_dist + "_" + search_dist + "_" + min_feats + "feats"
-outname3 = os.path.join(output_dir, filename3)
-arcpy.conversion.TableToExcel("nogo_join_Layer2", outname3, "ALIAS", "CODE")
+# Working now (use TableToTable instead of TableToExcel [this requires table as an input, not feature class])
+filename3 = "Table_" + buff_dist + "_" + search_dist + "_" + min_feats + "feats.csv"
+arcpy.TableToTable_conversion(in_rows="nogo_join_Layer2", out_path="Output", out_name=filename3)
