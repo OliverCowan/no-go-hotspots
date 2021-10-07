@@ -18,8 +18,9 @@ arcpy.env.workspace = gdb_dir
 # "min_feats" is min number of no-go polygons required to make up a cluster
 # "search_dist" is the radius used to look for clusters
 buff_dist = "250 Meters"
-min_feats = "30"
-search_dist = "10 Kilometers"
+search_dist = "20 Kilometers"
+min_feats = "40"
+
 
 # Convert SAPAD to feature layer
 pa_data = os.path.join(input_dir, "SAPAD_OR_2020_Q3_Ownership selection 1.shp")
