@@ -19,7 +19,7 @@ arcpy.env.workspace = gdb_dir
 # "search_dist" is the radius used to look for clusters
 buff_dist = "250 Meters"
 search_dist = "20 Kilometers"
-min_feats = "40"
+min_feats = "20"
 
 
 # Convert SAPAD to feature layer
@@ -36,6 +36,9 @@ arcpy.Buffer_analysis(in_features="SAPAD_layer", out_feature_class="SAPAD_buffer
 # Convert no-go polygon shapefile to feature layer
 nogo_data = os.path.join(input_dir, "nogo_PA.shp")
 arcpy.MakeFeatureLayer_management(nogo_data, "nogo_polygons")
+
+# Remove plant species if desired
+#arcpy.SelectLayerByAttribute_management("nogo_polygons", "NEW_SELECTION", "Theme <> 'Plants'")
 
 # Clip no-go polygons by SAPAD buffered layer to isolate the polygons which occur within PAs
 arcpy.analysis.Clip(in_features="nogo_polygons",
